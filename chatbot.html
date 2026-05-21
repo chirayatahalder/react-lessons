@@ -51,14 +51,45 @@
         );
       }
 
+      function ChatMessages() {
+        const [chatMessages, setChatMessages] = React.useState([
+          { message: "Hello Chatbot", sender: "user" },
+          { message: "Hello! How can I help you?", sender: "robot" },
+          { message: "can you get me today's date?", sender: "user" },
+          { message: "Today is May 21", sender: "robot" },
+        ]);
+
+        function sendMessages() {
+          setChatMessages([...chatMessages, { message: "test", sender: "user" }]);
+
+          console.log(chatMessages);
+        }
+
+        return (
+          <>
+            <button
+              onClick={() => {
+                sendMessages();
+              }}
+            >
+              Send Messages
+            </button>
+            {chatMessages.map((msg, index) => (
+              <ChatMessage
+                key={index}
+                message={msg.message}
+                sender={msg.sender}
+              />
+            ))}
+          </>
+        );
+      }
+
       function App() {
         return (
           <>
             <ChatInput />
-            <ChatMessage message="Hello Chatbot" sender="user" />
-            <ChatMessage message="Hello! How can I help you?" sender="robot" />
-            <ChatMessage message="can you get me today's date?" sender="user" />
-            <ChatMessage message="Today is May 21" sender="robot" />
+            <ChatMessages />
           </>
         );
       }

@@ -19,7 +19,7 @@
                 <div>
                     <img src={imageSrc} alt={imageSrc} width="150"/>
                     <p>{prduct_name}</p>
-                    <p>Price: ${product_price}</p>
+                    {discountPrice ? <p><del>Price: ${product_price}</del></p> : <p>Price: ${product_price}</p>}
 
                     {discountPrice && <p>Discount price: ${discountPrice}</p>}
                     <button>Add to Cart</button>
