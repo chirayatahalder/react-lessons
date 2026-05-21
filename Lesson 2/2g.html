@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Lesseon 2g</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function ProductDetails({ prduct_name, product_price, discountPrice, imageSrc }) {
+            return (
+                <div>
+                    <img src={imageSrc} alt={imageSrc} width="150"/>
+                    <p>{prduct_name}</p>
+                    {discountPrice ? <p><del>Price: ${product_price}</del></p> : <p>Price: ${product_price}</p>}
+
+                    {discountPrice && <p>Discount price: ${discountPrice}</p>}
+                    <button>Add to Cart</button>
+                </div>
+            )
+        }
+
+        function App() {
+            return (
+                <>
+                    <ProductDetails imageSrc="cotton-socks.png" prduct_name="Cotton Socks" product_price="10.90" discountPrice="5.45" />
+                    <ProductDetails imageSrc="tennis-balls.png" prduct_name="Tennis Balls" product_price="6.00" />
+                    <ProductDetails imageSrc="plain-t-shirt.png" prduct_name="Plain T-Shirt" product_price="7.99" />
+                </>
+            )
+        }
+
+        const container = document.querySelector(".js-container");
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

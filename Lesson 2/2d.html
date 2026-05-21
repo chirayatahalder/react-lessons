@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Lesseon 2d</title>
+</head>
+
+<body>
+  <div class="js-container"></div>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+  <script type="text/babel">
+
+    function MyInput({ type, placeholder }) {
+      return (
+        <div>
+          <input type={type} placeholder={placeholder} />
+        </div>
+      )
+    }
+    function MyButton({ text }) {
+      return (
+        <button>{text}</button>
+      )
+    }
+
+    function LoginForm() {
+      return (
+        <>
+          <MyInput type="email" placeholder="Email" />
+          <MyInput type="password" placeholder="Password" />
+          <>
+            <MyButton text="Login" />
+            <MyButton text="Sign Up" />
+          </>
+        </>
+      )
+    }
+
+    function App() {
+      return (
+        <>
+          <p>Hello, Welcome to my Website</p>
+          <LoginForm />
+        </>
+      )
+    }
+
+    const container = document.querySelector(".js-container");
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+
+</html>

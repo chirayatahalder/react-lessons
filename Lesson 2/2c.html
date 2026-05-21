@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Lesseon 2a</title>
+  <title>Lesseon 2c</title>
 </head>
 
 <body>
@@ -14,11 +14,31 @@
   <script src="https://unpkg.com/supersimpledev/babel.js"></script>
   <script type="text/babel">
 
+    function MyInput({ type, placeholder }) {
+      return (
+        <div>
+          <input type={type} placeholder={placeholder}/>
+        </div>
+      )
+    }
+    function MyButton({ text }) {
+      return (
+        <button>{text}</button>
+      )
+    }
 
     function App() {
       return (
         <>
           <p>Hello, Welcome to my Website</p>
+          <>
+            <MyInput type="email" placeholder="Email"/>
+            <MyInput type="password" placeholder="Password"/>
+          </>
+          <>
+            <MyButton text="Login" />
+            <MyButton text="Sign Up" />
+          </>
         </>
       )
     }

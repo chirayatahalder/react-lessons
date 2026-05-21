@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Lesseon 2a</title>
+  <title>Lesseon 2b</title>
 </head>
 
 <body>
@@ -14,11 +14,20 @@
   <script src="https://unpkg.com/supersimpledev/babel.js"></script>
   <script type="text/babel">
 
+    function MyButton({ text }) {
+      return (
+        <button>{text}</button>
+      )
+    }
 
     function App() {
       return (
         <>
           <p>Hello, Welcome to my Website</p>
+          <>
+            <MyButton text="Login" />
+            <MyButton text="Sign Up" />
+          </>
         </>
       )
     }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Lesseon 2f</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function Product({ prduct_name, product_price }) {
+            return (
+                <>
+                    <p>{prduct_name}</p>
+                    <p>Price: ${product_price}</p>
+                    <button>Add to Cart</button>
+                </>
+            )
+        }
+
+        function App() {
+            return (
+                <>
+                    <Product prduct_name="Cotton Socks" product_price="10.90" />
+                    <Product prduct_name="Tennis Balls" product_price="6.00" />
+                    <Product prduct_name="Plain T-Shirt" product_price="7.99" />
+                </>
+            )
+        }
+
+        const container = document.querySelector(".js-container");
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>
