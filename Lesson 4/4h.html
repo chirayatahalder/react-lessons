@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>4h</title>
+  </head>
+
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const [isAutoClicking, setIsAutoClicking] = React.useState(false);
+        const intervalIdRef = React.useRef(null);
+
+        function handleClick() {
+          setCount(count + 1);
+        }
+
+        function handleReset() {
+          setCount(0);
+        }
+
+        function handleAutoClick() {
+          if (!isAutoClicking) {
+            setIsAutoClicking(true);
+            const intervalId = setInterval(() => {
+              setCount((prevCount) => prevCount + 1);
+            }, 1000);
+            intervalIdRef.current = intervalId;
+          } else {
+            setIsAutoClicking(false);
+            clearInterval(intervalIdRef.current);
+            intervalIdRef.current = null;
+          }
+        }
+
+        return (
+          <>
+            <button onClick={handleClick}>Clicked {count} Time</button>
+            <button onClick={handleReset}>Reset</button>
+            <button onClick={handleAutoClick}>
+              {isAutoClicking ? "Stop Auto Click" : "Start Auto Click"}
+            </button>
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
