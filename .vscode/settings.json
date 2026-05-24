@@ -1,7 +1,7 @@
 {
     "liveServer.settings.port": 5501,
-    "editor.fontSize": 14,
-    "chat.editor.fontSize": 14,
-    "chat.fontSize": 14,
-    "scm.inputFontSize": 14
+    "editor.fontSize": 17,
+    "chat.editor.fontSize": 17,
+    "chat.fontSize": 17,
+    "scm.inputFontSize": 17
 }
