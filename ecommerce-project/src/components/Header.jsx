@@ -3,7 +3,13 @@ import Logo from "../assets/images/logo-white.png";
 import MobileLogo from "../assets/images/mobile-logo-white.png";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ cart }) {
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
   return (
     <>
       <div className="header">
@@ -18,7 +24,10 @@ export default function Header() {
           <input className="search-bar" type="text" placeholder="Search" />
 
           <button className="search-button">
-            <img className="search-icon" src="../src/assets/images/icons/search-icon.png" />
+            <img
+              className="search-icon"
+              src="../src/assets/images/icons/search-icon.png"
+            />
           </button>
         </div>
 
@@ -28,8 +37,11 @@ export default function Header() {
           </NavLink>
 
           <NavLink to="/checkout" className="cart-link header-link">
-            <img className="cart-icon" src="../src/assets/images/icons/cart-icon.png" />
-            <div className="cart-quantity">3</div>
+            <img
+              className="cart-icon"
+              src="../src/assets/images/icons/cart-icon.png"
+            />
+            <div className="cart-quantity">{totalQuantity}</div>
             <div className="cart-text">Cart</div>
           </NavLink>
         </div>
