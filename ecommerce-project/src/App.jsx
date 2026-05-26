@@ -18,6 +18,11 @@ function App() {
     setCart(response.data);
   };
 
+  const loadOrders = async () => {
+    const response = await axios.get("/api/orders?expand=products");
+    setOrders(response.data);
+  };
+
   useEffect(() => {
     // axios.get("/api/products").then((response) => {
     //   setProducts(response.data);
@@ -52,7 +57,7 @@ function App() {
       <Route index element={<HomePage products={products} cart={cart} loadCartItems={loadCartItems} />} />
       <Route
         path="/checkout"
-        element={<CheckoutPage products={products} cart={cart} loadCartItems={loadCartItems} />}
+        element={<CheckoutPage products={products} cart={cart} loadCartItems={loadCartItems} loadOrders={loadOrders} />}
       />
       <Route path="/orders" element={<Orders orders={orders} cart={cart} />} />
       <Route

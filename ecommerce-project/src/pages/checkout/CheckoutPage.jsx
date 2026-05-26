@@ -6,7 +6,7 @@ import "./CheckoutPage.css";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
 
-const CheckoutPage = ({ cart, loadCartItems }) => {
+const CheckoutPage = ({ cart, loadCartItems, loadOrders }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
@@ -54,7 +54,7 @@ const CheckoutPage = ({ cart, loadCartItems }) => {
             loadCartItems={loadCartItems}
           />
 
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <PaymentSummary paymentSummary={paymentSummary} loadCartItems={loadCartItems} loadOrders={loadOrders} />
         </div>
       </div>
     </>
