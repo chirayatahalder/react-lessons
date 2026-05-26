@@ -11,6 +11,7 @@ import Error404 from "./pages/Error404";
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
@@ -19,6 +20,11 @@ function App() {
 
     axios.get("/api/cart-items?expand=product").then((response) => {
       setCart(response.data);
+    });
+
+    axios.get("/api/orders?expand=products").then((response) => {
+      setOrders(response.data);
+      console.log(response.data);
     });
   }, []);
 
@@ -32,7 +38,7 @@ function App() {
       />
       <Route
         path="/orders"
-        element={<Orders products={products} cart={cart} />}
+        element={<Orders orders={orders} cart={cart} />}
       />
       <Route path="/tracking" element={<Tracking cart={cart} />} />
       <Route path="*" element={<Error404 cart={cart} />} />
