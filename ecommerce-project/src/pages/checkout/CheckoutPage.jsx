@@ -6,7 +6,7 @@ import "./CheckoutPage.css";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
 
-const CheckoutPage = ({ products, cart }) => {
+const CheckoutPage = ({ cart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
@@ -43,7 +43,7 @@ const CheckoutPage = ({ products, cart }) => {
         type="image/x-icon"
       />
 
-      <CheckoutHeader products={products} />
+      <CheckoutHeader cart={cart} />
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
 

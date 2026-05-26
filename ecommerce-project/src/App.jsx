@@ -54,7 +54,10 @@ function App() {
         element={<CheckoutPage products={products} cart={cart} />}
       />
       <Route path="/orders" element={<Orders orders={orders} cart={cart} />} />
-      <Route path="/tracking" element={<Tracking cart={cart} />} />
+      <Route
+        path="/tracking/:orderId/:productId"
+        element={<Tracking cart={cart} />}
+      />
       <Route path="*" element={<Error404 cart={cart} />} />
     </Routes>
   );

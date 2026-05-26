@@ -4,7 +4,11 @@ import MobileLogo from "../../assets/images/mobile-logo.png";
 import CheckoutLockIcon from "../../assets/images/icons/checkout-lock-icon.png";
 import "./checkout-header.css";
 
-const CheckoutHeader = ({ products }) => {
+const CheckoutHeader = ({ cart }) => {
+  let cartItemCount = 0;
+  cart.forEach((cartItem) => {
+    cartItemCount += cartItem.quantity;
+  });
   return (
     <>
       <div className="checkout-header">
@@ -19,7 +23,7 @@ const CheckoutHeader = ({ products }) => {
           <div className="checkout-header-middle-section">
             Checkout (
             <NavLink to="/" className="return-to-home-link">
-              {products.length} items
+              {cartItemCount} items
             </NavLink>
             )
           </div>
