@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import "./HomePage.css";
 import ProductsGrid from "./ProductsGrid";
 
-const HomePage = ({ products, cart }) => {
+const HomePage = ({ products, cart, loadCartItems }) => {
   return (
     <>
       <title>Ecommerce Project</title>
@@ -16,7 +16,7 @@ const HomePage = ({ products, cart }) => {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCartItems={loadCartItems} />
       </div>
     </>
   );
