@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Header from "../../components/Header";
 import { Fragment } from "react";
 import "./Orders.css";
-import BuyAgainIcon from "../assets/images/icons/buy-again.png";
+import BuyAgainIcon from "../../assets/images/icons/buy-again.png";
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
 
