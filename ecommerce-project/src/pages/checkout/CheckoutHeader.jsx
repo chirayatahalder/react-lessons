@@ -1,26 +1,26 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import Logo from "../../assets/images/logo.png";
 import MobileLogo from "../../assets/images/mobile-logo.png";
 import CheckoutLockIcon from "../../assets/images/icons/checkout-lock-icon.png";
 import "./checkout-header.css";
 
-const CheckoutHeader = () => {
+const CheckoutHeader = ({ products }) => {
   return (
     <>
       <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
-            <Link to="/">
+            <NavLink to="/">
               <img className="logo" src={Logo} />
               <img className="mobile-logo" src={MobileLogo} />
-            </Link>
+            </NavLink>
           </div>
 
           <div className="checkout-header-middle-section">
             Checkout (
-            <Link to="/" className="return-to-home-link">
-              3 items
-            </Link>
+            <NavLink to="/" className="return-to-home-link">
+              {products.length} items
+            </NavLink>
             )
           </div>
 
