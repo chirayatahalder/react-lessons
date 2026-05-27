@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import "./Orders.css";
 import OrdersPage from "./OrdersPage";
 
-const Orders = ({ orders, cart }) => {
+const Orders = ({ orders, cart, loadCartItems, loadOrders }) => {
   return (
     <>
       <title>Orders</title>
@@ -15,7 +15,7 @@ const Orders = ({ orders, cart }) => {
 
       <Header cart={cart} />
 
-      <OrdersPage orders={orders} />
+      <OrdersPage orders={orders} loadCartItems={loadCartItems} loadOrders={loadOrders} />
     </>
   );
 };

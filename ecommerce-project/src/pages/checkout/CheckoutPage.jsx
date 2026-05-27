@@ -22,16 +22,21 @@ const CheckoutPage = ({ cart, loadCartItems, loadOrders }) => {
         "/api/delivery-options?expand=estimatedDeliveryTime",
       );
       setDeliveryOptions(response.data);
-
-      response = await axios.get("/api/payment-summary");
-      setPaymentSummary(response.data);
-    }
+    };
 
     // axios.get("/api/payment-summary").then((response) => {
     //   setPaymentSummary(response.data);
     // });
 
     fetchCheckoutData();
+  }, []);
+
+  useEffect(() => {
+    const paymentSummaryData = async () => {
+      const response = await axios.get("/api/payment-summary");
+      setPaymentSummary(response.data);
+    };
+    paymentSummaryData();
   }, [cart]);
 
   return (
@@ -54,7 +59,11 @@ const CheckoutPage = ({ cart, loadCartItems, loadOrders }) => {
             loadCartItems={loadCartItems}
           />
 
-          <PaymentSummary paymentSummary={paymentSummary} loadCartItems={loadCartItems} loadOrders={loadOrders} />
+          <PaymentSummary
+            paymentSummary={paymentSummary}
+            loadCartItems={loadCartItems}
+            loadOrders={loadOrders}
+          />
         </div>
       </div>
     </>

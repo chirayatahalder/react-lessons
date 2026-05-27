@@ -2,7 +2,7 @@ import OrderDetailsGrid from "./OrderDetailsGrid";
 import OrderHeader from "./OrderHeader";
 import { Fragment } from "react";
 
-export default function OrdersPage({ orders }) {
+export default function OrdersPage({ orders, loadCartItems, loadOrders }) {
   return (
     <div className="orders-page">
       <div className="page-title">Your Orders</div>
@@ -14,7 +14,7 @@ export default function OrdersPage({ orders }) {
               <Fragment key={order.id}>
                 <div className="order-container">
                   <OrderHeader order={order} />
-                  <OrderDetailsGrid order={order} />
+                  <OrderDetailsGrid order={order} loadCartItems={loadCartItems} loadOrders={loadOrders} />
                 </div>
               </Fragment>
             );

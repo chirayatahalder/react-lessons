@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router";
+import { Routes, Route, useSearchParams } from "react-router";
 import HomePage from "./pages/home/HomePage";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import Orders from "./pages/orders/Orders";
@@ -12,6 +12,8 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("search") || "";
 
   const loadCartItems = async () => {
     const response = await axios.get("/api/cart-items?expand=product");
@@ -28,7 +30,9 @@ function App() {
     //   setProducts(response.data);
     // });
     const getHomeData = async () => {
-      const response = await axios.get("/api/products");
+      const response = await axios.get(
+        searchTerm ? `/api/products?search=${searchTerm}` : "/api/products",
+      );
       setProducts(response.data);
     };
     getHomeData();
@@ -49,17 +53,43 @@ function App() {
       setOrders(response.data);
     };
     getOrders();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <Routes>
       {/* <Route path="/" element={<HomePage />} /> */}
-      <Route index element={<HomePage products={products} cart={cart} loadCartItems={loadCartItems} />} />
+      <Route
+        index
+        element={
+          <HomePage
+            products={products}
+            cart={cart}
+            loadCartItems={loadCartItems}
+          />
+        }
+      />
       <Route
         path="/checkout"
-        element={<CheckoutPage products={products} cart={cart} loadCartItems={loadCartItems} loadOrders={loadOrders} />}
+        element={
+          <CheckoutPage
+            products={products}
+            cart={cart}
+            loadCartItems={loadCartItems}
+            loadOrders={loadOrders}
+          />
+        }
       />
-      <Route path="/orders" element={<Orders orders={orders} cart={cart} />} />
+      <Route
+        path="/orders"
+        element={
+          <Orders
+            orders={orders}
+            cart={cart}
+            loadCartItems={loadCartItems}
+            loadOrders={loadOrders}
+          />
+        }
+      />
       <Route
         path="/tracking/:orderId/:productId"
         element={<Tracking cart={cart} />}
