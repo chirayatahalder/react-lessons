@@ -1,6 +1,8 @@
 import { formatMoney } from "../../utils/money";
 import axios from "axios";
 import { useState } from "react";
+
+
 export default function Product({ product, loadCartItems }) {
   const [quantity, setQuantity] = useState(1);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -21,7 +23,7 @@ export default function Product({ product, loadCartItems }) {
   return (
     <div className="product-container">
       <div className="product-image-container">
-        <img className="product-image" src={product.image} />
+        <img className="product-image" data-testid="product-image" src={product.image} />
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
@@ -29,6 +31,7 @@ export default function Product({ product, loadCartItems }) {
       <div className="product-rating-container">
         <img
           className="product-rating-stars"
+          data-testid="product-rating-stars-image"
           src={`images/ratings/rating-${Math.round(product.rating.stars * 10)}.png`}
         />
         <div className="product-rating-count link-primary">
@@ -60,7 +63,7 @@ export default function Product({ product, loadCartItems }) {
         Added
       </div>
 
-      <button className="add-to-cart-button button-primary" onClick={addToCart}>
+      <button className="add-to-cart-button button-primary" data-testid="add-to-cart-button" onClick={addToCart}>
         Add to Cart
       </button>
     </div>
